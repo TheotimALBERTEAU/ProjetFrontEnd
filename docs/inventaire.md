@@ -27,3 +27,10 @@ Relevé à partir des huit écrans de `env/maquette/` et de `charte.md`.
 | `form-section` | Demande (Vos coordonnées, Votre demande), Espace (Mes préférences) | Carte blanche avec bordure ; encadré sur fond de section | Contient une erreur (résumé d'erreurs) |
 | `requests-table` | Espace | Ligne sans action ; ligne avec action « Annuler » (statut Envoyée) | Survol de ligne ; tableau vide ; aucun résultat après filtrage ; affichage téléphone (non dessiné) ; chargement |
 | `status-badge` | Espace | Envoyée, Acceptée, Refusée (couleurs de la charte) | — (non interactif) |
+
+## Écarts à la maquette
+
+Lorsqu'il y a un écart à la maquette lors de l'intégration, le noter ici :
+
+| Écart | Pourquoi ? |
+| - | :- |
