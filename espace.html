@@ -1,27 +1,28 @@
 <!doctype html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Espace . Portail des services</title>
-  </head>
-  <body>
+    <title>Mes demandes · Portail des services</title>
+</head>
+<body>
     <header>
-      <p>Portail des services</p>
-      <nav>
-        <ul>
-          <li><a href="services.html">services</a></li>
-          <li><a href="demande.html">Mes demandes</a></li>
-          <li><a href="demande.html">Mon espace</a></li>
-        </ul>
-      </nav>
+        <p>Portail des services</p>
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="espace.html" aria-current="page">Mes demandes</a></li>
+                <li><a href="#">Aide</a></li>
+                <li><a href="espace.html">Mon espace</a></li>
+            </ul>
+        </nav>
     </header>
     <main id="contenu">
         <h1>Mes demandes</h1>
         <p>Bonjour Camille. Voici vos demandes de ce semestre.</p>
 
         <label for="statut">Statut</label>
-        <select id="statut">
+        <select id="statut" name="statut">
             <option>Tous les statuts</option>
         </select>
 
@@ -47,7 +48,7 @@
                     <td>15/10/2026</td>
                     <td>Après-midi</td>
                     <td><span>Envoyée</span></td>
-                    <td><button type="button">Annuler</button></td>
+                    <td><button type="button" aria-label="Annuler la demande : Réservation de salle">Annuler</button></td>
                 </tr>
                 <tr>
                     <th scope="row">Inscription au sport universitaire</th>
@@ -64,15 +65,44 @@
             <form>
                 <fieldset>
                     <legend>Thème</legend>
-                    <input type="radio" id="clair" name="theme"/> <label for="clair">Clair</label>
-                    <input type="radio" id="sombre" name="theme"/> <label for="sombre">Sombre</label>
-                    <input type="radio" id="systeme" name="theme" checked/> <label for="systeme">Comme le système</label>
+                    <input type="radio" id="clair" name="theme" value="clair"/> <label for="clair">Clair</label>
+                    <input type="radio" id="sombre" name="theme" value="sombre"/> <label for="sombre">Sombre</label>
+                    <input type="radio" id="systeme" name="theme" value="systeme" checked/> <label for="systeme">Comme le système</label>
                 </fieldset>
-                <input type="checkbox" id="masquer-complets" checked/>
+                <input type="checkbox" id="masquer-complets" name="masquer-complets" checked/>
                 <label for="masquer-complets">Masquer les services complets</label>
                 <p>Enregistrées sur cet appareil.</p>
             </form>
         </aside>
     </main>
-  </body>
+    <footer>
+        <ul>
+            <li>
+                <h2>Le portail</h2>
+                <ul>
+                    <li><a href="services.html">Tous les services</a></li>
+                    <li><a href="espace.html">Mes demandes</a></li>
+                    <li><a href="#">Aide</a></li>
+                </ul>
+            </li>
+            <li>
+                <h2>Contact</h2>
+                <ul>
+                    <li><span>Accueil vie étudiante</span></li>
+                    <li><span>02 00 00 00 00</span></li>
+                    <li><span>Lundi au vendredi, 9 h à 17 h</span></li>
+                </ul>
+            </li>
+            <li>
+                <h2>Informations</h2>
+                <ul>
+                    <li><a href="#">Accessibilité : partiellement conforme</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Plan du site</a></li>
+                </ul>
+            </li>
+        </ul>
+        <p>© 2026 Portail des services</p>
+    </footer>
+</body>
 </html>
