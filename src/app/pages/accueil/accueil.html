@@ -1,0 +1,30 @@
+<div class="recherche">
+  <h1>Tous les services du campus, <span>au même endroit</span></h1>
+  <p>Prêt de matériel, salles, logement, sport, aides et santé : faites vos demandes en ligne.</p>
+  <form action="/services" role="search">
+    <label for="recherche">Rechercher un service</label>
+    <input type="search" id="recherche" name="q" placeholder="Rechercher un service…" />
+    <button type="submit">Rechercher</button>
+  </form>
+</div>
+
+<div class="categories">
+  <h2>Parcourir par catégorie</h2>
+  <ul>
+    @for (categorie of categories; track categorie.id) {
+      <li>
+        <p>{{ categorie.libelle }}</p>
+        <span>{{ categorie.nombre }} services</span>
+      </li>
+    }
+  </ul>
+</div>
+
+<div class="article">
+  <h2>Services à la une</h2>
+  <ul>
+    @for (service of aLaUne; track service.id) {
+      <li><app-service-card [service]="service" /></li>
+    }
+  </ul>
+</div>

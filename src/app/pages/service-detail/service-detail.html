@@ -1,0 +1,39 @@
+<app-breadcrumb [items]="fil()" />
+
+@if (service(); as service) {
+  <img [src]="'/img/' + service.image + '-800.jpg'" alt="" width="800" height="533" />
+  <span>{{ categorie() }}</span>
+  <h1>{{ service.nom }}</h1>
+  <p>{{ service.resume }}</p>
+
+  <dl>
+    <dt>Lieu</dt>
+    <dd>{{ service.lieu }}</dd>
+    <dt>Délai</dt>
+    <dd>{{ delai() }}</dd>
+    <dt>Places</dt>
+    <dd>{{ places() }}</dd>
+  </dl>
+
+  <a [routerLink]="['/services', service.id, 'demande']">Faire une demande</a>
+  <button type="button"><span aria-hidden="true">☆</span> Ajouter aux favoris</button>
+
+  <section>
+    <h2>Le service en détail</h2>
+    <p>{{ service.description }}</p>
+  </section>
+
+  @if (memeCategorie().length) {
+    <aside>
+      <h2>Dans la même catégorie</h2>
+      <ul>
+        @for (autre of memeCategorie(); track autre.id) {
+          <li><app-service-card [service]="autre" /></li>
+        }
+      </ul>
+    </aside>
+  }
+} @else {
+  <h1>Service introuvable</h1>
+  <p><a routerLink="/services">Revenir à la liste des services</a></p>
+}
