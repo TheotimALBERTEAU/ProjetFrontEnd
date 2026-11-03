@@ -1,0 +1,50 @@
+<h1>Mes demandes</h1>
+<p>Bonjour Camille. Voici vos demandes de ce semestre.</p>
+
+<label for="statut">Statut</label>
+<select id="statut" name="statut">
+  <option>Tous les statuts</option>
+</select>
+
+<table>
+  <caption>Mes demandes du semestre</caption>
+  <thead>
+    <tr>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Créneau</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (demande of demandes; track demande.id) {
+      <tr>
+        <th scope="row">{{ demande.service }}</th>
+        <td>{{ demande.date }}</td>
+        <td>{{ demande.creneau }}</td>
+        <td><span>{{ demande.statut }}</span></td>
+        <td>
+          @if (demande.annulable) {
+            <button type="button" [attr.aria-label]="'Annuler la demande : ' + demande.service">Annuler</button>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<aside>
+  <h2>Mes préférences</h2>
+  <form>
+    <fieldset>
+      <legend>Thème</legend>
+      <input type="radio" id="clair" name="theme" value="clair" /> <label for="clair">Clair</label>
+      <input type="radio" id="sombre" name="theme" value="sombre" /> <label for="sombre">Sombre</label>
+      <input type="radio" id="systeme" name="theme" value="systeme" checked /> <label for="systeme">Comme le système</label>
+    </fieldset>
+    <input type="checkbox" id="masquer-complets" name="masquer-complets" checked />
+    <label for="masquer-complets">Masquer les services complets</label>
+    <p>Enregistrées sur cet appareil.</p>
+  </form>
+</aside>

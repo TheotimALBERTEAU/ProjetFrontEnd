@@ -1,0 +1,8 @@
+<article>
+  <img [src]="'/img/' + service().image + '-800.jpg'" alt="" width="800" height="533" />
+  <span>{{ categorie() }}</span>
+  <h3><a [routerLink]="['/services', service().id]">{{ service().nom }}</a></h3>
+  <p>{{ service().resume }}</p>
+  <p>{{ disponibilite() }}</p>
+  <a [routerLink]="['/services', service().id]">Voir la fiche</a>
+</article>
