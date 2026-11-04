@@ -1,20 +1,33 @@
 <app-breadcrumb [items]="fil" />
 
-<div class="Titre">
+<div class="titre">
   <h1>Services</h1>
   <p>{{ total }} services</p>
-  <label for="tri">Trier par</label>
-  <select id="tri" name="tri">
-    <option>Nom, de A à Z</option>
-  </select>
+  <button
+    type="button"
+    class="bouton-neutre filtres-bouton"
+    aria-controls="filtres"
+    [attr.aria-expanded]="filtresOuverts()"
+    (click)="filtresOuverts.set(!filtresOuverts())"
+  >
+    Filtres
+  </button>
+  <div class="tri">
+    <label for="tri">Trier par</label>
+    <select id="tri" name="tri">
+      <option>Nom, de A à Z</option>
+    </select>
+  </div>
 </div>
 
-<aside>
+<aside id="filtres" class="encadre" [class.ouvert]="filtresOuverts()">
   <h2>Filtrer</h2>
   <form>
-    <label for="recherche">Rechercher un service</label>
-    <input type="search" id="recherche" name="q" />
-    <fieldset>
+    <div class="champ">
+      <label for="recherche">Rechercher un service</label>
+      <input type="search" id="recherche" name="q" />
+    </div>
+    <fieldset class="choix">
       <legend>Catégorie</legend>
       <input type="radio" id="cat-toutes" name="categorie" value="toutes" checked />
       <label for="cat-toutes">Toutes</label>
@@ -23,25 +36,29 @@
         <label [for]="'cat-' + categorie.id">{{ categorie.libelle }}</label>
       }
     </fieldset>
-    <input type="checkbox" id="dispo" name="dispo" />
-    <label for="dispo">Places disponibles uniquement</label>
-    <label for="delai">Délai de traitement</label>
-    <select id="delai" name="delai">
-      <option>Tous les délais</option>
-    </select>
-    <button type="reset">Réinitialiser les filtres</button>
+    <div class="choix">
+      <input type="checkbox" id="dispo" name="dispo" />
+      <label for="dispo">Places disponibles uniquement</label>
+    </div>
+    <div class="champ">
+      <label for="delai">Délai de traitement</label>
+      <select id="delai" name="delai">
+        <option>Tous les délais</option>
+      </select>
+    </div>
+    <button type="reset" class="bouton-lien">Réinitialiser les filtres</button>
   </form>
 </aside>
 
-<ul>
+<ul class="liste">
   @for (service of services; track service.id) {
     <li><app-service-card [service]="service" /></li>
   }
 </ul>
 
-<nav aria-label="Pagination">
+<nav aria-label="Pagination" class="pagination">
   <ul>
-    <li><a aria-label="Page précédente">‹</a></li>
+    <li><a aria-label="Page précédente" aria-disabled="true">‹</a></li>
     <li><a routerLink="/services" [queryParams]="{ page: 1 }" aria-current="page">1</a></li>
     <li><a routerLink="/services" [queryParams]="{ page: 2 }">2</a></li>
     <li><a routerLink="/services" [queryParams]="{ page: 2 }" aria-label="Page suivante">›</a></li>

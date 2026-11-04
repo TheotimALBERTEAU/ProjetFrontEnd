@@ -1,8 +1,8 @@
-<article>
+<article [attr.data-categorie]="service().categorie">
   <img [src]="'/img/' + service().image + '-800.jpg'" alt="" width="800" height="533" />
-  <span>{{ categorie() }}</span>
+  <span class="badge">{{ categorie() }}</span>
   <h3><a [routerLink]="['/services', service().id]">{{ service().nom }}</a></h3>
-  <p>{{ service().resume }}</p>
-  <p>{{ disponibilite() }}</p>
-  <a [routerLink]="['/services', service().id]">Voir la fiche</a>
+  <p class="resume">{{ service().resume }}</p>
+  <p class="places" [class.complet]="service().places === 0">{{ disponibilite() }}</p>
+  <a class="voir" [routerLink]="['/services', service().id]" aria-hidden="true" tabindex="-1">Voir la fiche</a>
 </article>

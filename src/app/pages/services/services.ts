@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CATEGORIES, SERVICES } from '../../data/donnees';
 import { SERVICES_TRIES } from '../../data/libelles';
@@ -17,4 +17,5 @@ export class Services {
   protected readonly categories = CATEGORIES;
   /** Page 1 : les neuf premiers services, triés par nom. */
   protected readonly services = SERVICES_TRIES.slice(0, 9);
+  protected readonly filtresOuverts = signal(false);
 }
