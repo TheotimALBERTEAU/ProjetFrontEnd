@@ -2,7 +2,7 @@
   <h1>Tous les services du campus, <span>au même endroit</span></h1>
   <p>Prêt de matériel, salles, logement, sport, aides et santé : faites vos demandes en ligne.</p>
   <form action="/services" role="search">
-    <label for="recherche">Rechercher un service</label>
+    <label for="recherche" class="visually-hidden">Rechercher un service</label>
     <input type="search" id="recherche" name="q" placeholder="Rechercher un service…" />
     <button type="submit">Rechercher</button>
   </form>
@@ -12,7 +12,7 @@
   <h2>Parcourir par catégorie</h2>
   <ul>
     @for (categorie of categories; track categorie.id) {
-      <li>
+      <li [attr.data-categorie]="categorie.id">
         <p>{{ categorie.libelle }}</p>
         <span>{{ categorie.nombre }} services</span>
       </li>

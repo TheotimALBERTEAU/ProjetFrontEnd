@@ -1,0 +1,120 @@
+.recherche {
+  margin-top: calc(-1 * var(--espace-5));
+  padding-block: var(--espace-6) var(--espace-4);
+  background: var(--couleur-fond-section);
+  /* Ces deux lignes étirent le fond gris jusqu'aux bords de l'écran sans faire apparaître de barre de défilement horizontale. */
+  box-shadow: 0 0 0 100vmax var(--couleur-fond-section);
+  clip-path: inset(0 -100vmax);
+
+  h1 span {
+    display: block;
+    color: var(--couleur-primaire);
+  }
+
+  > p {
+    margin-top: var(--espace-4);
+    font-size: var(--taille-intro);
+    color: var(--couleur-texte-secondaire);
+  }
+
+  form {
+    display: grid;
+    gap: var(--espace-3);
+    margin-top: var(--espace-4);
+  }
+
+  input {
+    min-height: 52px;
+  }
+
+  button {
+    min-height: 52px;
+  }
+}
+
+.categories,
+.article {
+  margin-top: var(--espace-6);
+
+  h2 {
+    margin-bottom: var(--espace-4);
+  }
+}
+
+.categories ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espace-3);
+}
+
+.categories li {
+  padding: var(--espace-3) var(--espace-4);
+  color: var(--cat-texte);
+  background: var(--cat-fond);
+  border-radius: var(--rayon);
+
+  p {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  span {
+    font-size: var(--taille-texte);
+  }
+}
+
+.article ul {
+  display: grid;
+  gap: var(--espace-5);
+}
+
+@media (min-width: 48em) {
+  .recherche {
+    padding-block: var(--espace-7) var(--espace-7);
+
+    form {
+      grid-template-columns: minmax(0, 560px) auto;
+      justify-content: start;
+      margin-top: var(--espace-6);
+    }
+
+    button {
+      padding-inline: var(--espace-6);
+    }
+  }
+
+  .categories,
+  .article {
+    margin-top: var(--espace-7);
+
+    h2 {
+      margin-bottom: var(--espace-5);
+    }
+  }
+
+  .categories ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espace-4);
+  }
+
+  .categories li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-4);
+    padding: var(--espace-4);
+  }
+
+  .article ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .categories ul {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .article ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
