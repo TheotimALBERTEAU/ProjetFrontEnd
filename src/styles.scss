@@ -1,1 +1,339 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Couleurs */
+  --couleur-texte: #1c1b22;
+  --couleur-texte-secondaire: #5d5a6b;
+  --couleur-primaire: #5b3cc4;
+  --couleur-primaire-survol: #432a99;
+  --couleur-fond: #ffffff;
+  --couleur-fond-section: #f5f4fa;
+  --couleur-bordure: #d9d6e8;
+  --couleur-contour: #7a7690;
+  --couleur-succes: #1f7a3e;
+  --couleur-erreur: #b42318;
+  --couleur-sur-primaire: #ffffff;
+
+  --statut-envoyee-fond: #fff4d6;
+  --statut-envoyee-texte: #8a5a00;
+  --statut-acceptee-fond: #e6f4ea;
+  --statut-acceptee-texte: #1f7a3e;
+  --statut-refusee-fond: #fdecea;
+  --statut-refusee-texte: #9e2a1f;
+
+  /* Texte */
+  --police: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --taille-h1: 1.75rem;
+  --taille-h2: 1.375rem;
+  --taille-h3: 1.125rem;
+  --taille-texte: 1rem;
+  --taille-petit: 0.875rem;
+  --taille-intro: 1.125rem;
+  --interligne: 1.5;
+
+  /* Tailles */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-5: 24px;
+  --espace-6: 32px;
+  --espace-7: 48px;
+  --espace-8: 64px;
+
+  --rayon: 8px;
+  --rayon-pastille: 999px;
+  --ombre-carte: 0 1px 2px rgb(28 27 34 / 8%);
+  --ombre-carte-survol: 0 4px 12px rgb(28 27 34 / 12%);
+  --largeur-max: 1200px;
+  --gouttiere: var(--espace-5);
+  --hauteur-champ: 44px;
+}
+
+@media (min-width: 48em) {
+  :root {
+    --taille-h1: 2.5rem;
+    --taille-h2: 1.75rem;
+    --taille-h3: 1.25rem;
+    --gouttiere: 40px;
+  }
+}
+
+/* Chaque catégorie déclare ses deux couleurs ici, et les badges ou les tuiles n'ont plus qu'à les utiliser. */
+[data-categorie="materiel"] { --cat-fond: #ede9fb; --cat-texte: #5b3cc4; }
+[data-categorie="salles"]   { --cat-fond: #e0f2ef; --cat-texte: #0f766e; }
+[data-categorie="logement"] { --cat-fond: #fdf0e1; --cat-texte: #9a3412; }
+[data-categorie="sport"]    { --cat-fond: #e3eafd; --cat-texte: #1d4ed8; }
+[data-categorie="aide"]     { --cat-fond: #fce7ec; --cat-texte: #be123c; }
+[data-categorie="sante"]    { --cat-fond: #e2f4e7; --cat-texte: #166534; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--police);
+  font-size: var(--taille-texte);
+  line-height: var(--interligne);
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--taille-h1); font-weight: 700; }
+h2 { font-size: var(--taille-h2); font-weight: 700; }
+h3 { font-size: var(--taille-h3); font-weight: 600; }
+
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--couleur-primaire);
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--couleur-primaire-survol);
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--couleur-primaire);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button,
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espace-2);
+  min-height: var(--hauteur-champ);
+  padding: var(--espace-2) var(--espace-5);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  color: var(--couleur-sur-primaire);
+  background: var(--couleur-primaire);
+  border: 1px solid var(--couleur-primaire);
+  border-radius: var(--rayon);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--couleur-sur-primaire);
+    background: var(--couleur-primaire-survol);
+    border-color: var(--couleur-primaire-survol);
+  }
+}
+
+.bouton-secondaire {
+  color: var(--couleur-primaire);
+  background: var(--couleur-fond);
+
+  &:hover {
+    color: var(--couleur-primaire-survol);
+    background: var(--couleur-fond-section);
+  }
+}
+
+.bouton-neutre {
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+  border-color: var(--couleur-contour);
+
+  &:hover {
+    color: var(--couleur-texte);
+    background: var(--couleur-fond-section);
+    border-color: var(--couleur-texte);
+  }
+}
+
+.bouton-lien {
+  min-height: 0;
+  padding: 0;
+  color: var(--couleur-primaire);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--couleur-primaire-survol);
+    background: none;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--espace-1) var(--espace-3);
+  font-size: var(--taille-petit);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--cat-texte, var(--couleur-primaire));
+  background: var(--cat-fond, var(--couleur-fond-section));
+  border-radius: var(--rayon-pastille);
+}
+
+[data-statut="envoyee"] { --cat-fond: var(--statut-envoyee-fond); --cat-texte: var(--statut-envoyee-texte); }
+[data-statut="acceptee"] { --cat-fond: var(--statut-acceptee-fond); --cat-texte: var(--statut-acceptee-texte); }
+[data-statut="refusee"] { --cat-fond: var(--statut-refusee-fond); --cat-texte: var(--statut-refusee-texte); }
+
+label,
+legend {
+  font-weight: 700;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+input:not([type="radio"], [type="checkbox"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-height: var(--hauteur-champ);
+  padding: var(--espace-2) var(--espace-4);
+  font: inherit;
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+  border: 1px solid var(--couleur-contour);
+  border-radius: var(--rayon);
+
+  &::placeholder {
+    color: var(--couleur-texte-secondaire);
+  }
+
+  &:hover {
+    border-color: var(--couleur-texte);
+  }
+
+  &:focus-visible {
+    outline-offset: 0;
+    border-color: var(--couleur-primaire);
+  }
+
+  /* On attend que la personne ait rempli le champ avant de l'afficher en rouge. */
+  &:user-invalid,
+  &[aria-invalid="true"] {
+    border: 2px solid var(--couleur-erreur);
+  }
+}
+
+select {
+  appearance: none;
+  padding-right: var(--espace-7);
+  background-image: linear-gradient(45deg, transparent 50%, var(--couleur-texte-secondaire) 50%),
+    linear-gradient(135deg, var(--couleur-texte-secondaire) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 50%, calc(100% - 17px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--couleur-primaire);
+  flex-shrink: 0;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.aide,
+[id$="-aide"] {
+  margin-top: var(--espace-2);
+  font-size: var(--taille-petit);
+  color: var(--couleur-texte-secondaire);
+}
+
+[id$="-err"] {
+  margin-top: var(--espace-1);
+  font-size: var(--taille-petit);
+  font-weight: 700;
+  color: var(--couleur-erreur);
+
+  /* Les messages d'erreur sont dans la page dès le départ, on les cache tant qu'ils sont vides. */
+  &:empty {
+    display: none;
+  }
+
+  &::before {
+    content: "✕ ";
+  }
+}
+
+.encadre {
+  padding: var(--espace-5);
+  background: var(--couleur-fond-section);
+  border-radius: var(--rayon);
+
+  h2 {
+    font-size: 1.375rem;
+    margin-bottom: var(--espace-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
