@@ -1,24 +1,36 @@
 <app-breadcrumb [items]="fil()" />
 
 @if (service(); as service) {
-  <img [src]="'/img/' + service.image + '-800.jpg'" alt="" width="800" height="533" />
-  <span>{{ categorie() }}</span>
-  <h1>{{ service.nom }}</h1>
-  <p>{{ service.resume }}</p>
+  <div class="entete" [attr.data-categorie]="service.categorie">
+    <img [src]="'/img/' + service.image + '-800.jpg'" alt="" width="800" height="533" />
+    <div class="infos">
+      <span class="badge">{{ categorie() }}</span>
+      <h1>{{ service.nom }}</h1>
+      <p class="resume">{{ service.resume }}</p>
 
-  <dl>
-    <dt>Lieu</dt>
-    <dd>{{ service.lieu }}</dd>
-    <dt>Délai</dt>
-    <dd>{{ delai() }}</dd>
-    <dt>Places</dt>
-    <dd>{{ places() }}</dd>
-  </dl>
+      <dl>
+        <div>
+          <dt>Lieu</dt>
+          <dd>{{ service.lieu }}</dd>
+        </div>
+        <div>
+          <dt>Délai</dt>
+          <dd>{{ delai() }}</dd>
+        </div>
+        <div>
+          <dt>Places</dt>
+          <dd>{{ places() }}</dd>
+        </div>
+      </dl>
 
-  <a [routerLink]="['/services', service.id, 'demande']">Faire une demande</a>
-  <button type="button"><span aria-hidden="true">☆</span> Ajouter aux favoris</button>
+      <div class="actions">
+        <a class="bouton" [routerLink]="['/services', service.id, 'demande']">Faire une demande</a>
+        <button type="button" class="bouton-secondaire"><span aria-hidden="true">☆</span> Ajouter aux favoris</button>
+      </div>
+    </div>
+  </div>
 
-  <section>
+  <section class="detail">
     <h2>Le service en détail</h2>
     <p>{{ service.description }}</p>
   </section>

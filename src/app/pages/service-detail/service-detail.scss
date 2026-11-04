@@ -1,0 +1,139 @@
+:host {
+  display: block;
+}
+
+.entete {
+  display: grid;
+  gap: var(--espace-5);
+  margin-top: var(--espace-5);
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--cat-fond);
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espace-3);
+}
+
+.resume {
+  max-width: 34em;
+  font-size: var(--taille-intro);
+  color: var(--couleur-texte-secondaire);
+}
+
+dl {
+  align-self: stretch;
+  margin-top: var(--espace-3);
+  border-bottom: 1px solid var(--couleur-bordure);
+
+  div {
+    padding-block: var(--espace-2);
+    border-top: 1px solid var(--couleur-bordure);
+  }
+
+  dt {
+    font-size: var(--taille-petit);
+    color: var(--couleur-texte-secondaire);
+  }
+
+  dd {
+    font-weight: 700;
+  }
+}
+
+.actions {
+  align-self: stretch;
+  display: grid;
+  gap: var(--espace-3);
+  margin-top: var(--espace-5);
+
+  .bouton,
+  button {
+    min-height: 48px;
+  }
+}
+
+.detail {
+  margin-top: var(--espace-7);
+
+  p {
+    max-width: 45em;
+    margin-top: var(--espace-4);
+    font-size: var(--taille-intro);
+  }
+}
+
+aside {
+  display: none;
+  margin-top: var(--espace-7);
+
+  ul {
+    display: grid;
+    gap: var(--espace-5);
+    margin-top: var(--espace-5);
+  }
+}
+
+@media (max-width: 47.99em) {
+  img {
+    width: calc(100% + 2 * var(--gouttiere));
+    max-width: none;
+    margin-inline: calc(-1 * var(--gouttiere));
+  }
+}
+
+@media (min-width: 48em) {
+  .entete {
+    grid-template-columns: minmax(0, 8fr) minmax(0, 7fr);
+    gap: var(--espace-6) 40px;
+    align-items: start;
+  }
+
+  img {
+    border-radius: var(--rayon);
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: baseline;
+    padding-block: var(--espace-3);
+  }
+
+  dt {
+    font-size: var(--taille-texte);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-4);
+
+    .bouton,
+    button {
+      min-height: 52px;
+      padding-inline: var(--espace-6);
+    }
+  }
+
+  aside {
+    display: block;
+
+    ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (min-width: 64em) {
+  aside ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
