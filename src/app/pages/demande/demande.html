@@ -7,16 +7,18 @@
   <fieldset>
     <legend>Vos coordonnées</legend>
 
-    <div>
-      <label for="nom">Nom *</label>
-      <input type="text" id="nom" name="nom" autocomplete="family-name" required aria-describedby="nom-err" />
-      <p id="nom-err"></p>
-    </div>
+    <div class="ligne">
+      <div>
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" autocomplete="family-name" required aria-describedby="nom-err" />
+        <p id="nom-err"></p>
+      </div>
 
-    <div>
-      <label for="prenom">Prénom *</label>
-      <input type="text" id="prenom" name="prenom" autocomplete="given-name" required aria-describedby="prenom-err" />
-      <p id="prenom-err"></p>
+      <div>
+        <label for="prenom">Prénom *</label>
+        <input type="text" id="prenom" name="prenom" autocomplete="given-name" required aria-describedby="prenom-err" />
+        <p id="prenom-err"></p>
+      </div>
     </div>
 
     <div>
@@ -46,14 +48,14 @@
       <p id="service-err"></p>
     </div>
 
-    <div class="date-line">
+    <div class="ligne">
       <div>
         <label for="date">Date souhaitée *</label>
         <input type="date" id="date" name="date" required aria-describedby="date-err" />
         <p id="date-err"></p>
       </div>
 
-      <fieldset aria-describedby="creneau-err">
+      <fieldset class="creneau" aria-describedby="creneau-err">
         <legend>Créneau *</legend>
         <input type="radio" id="creneau-matin" name="creneau" value="matin" required />
         <label for="creneau-matin">Matin</label>
@@ -70,21 +72,21 @@
       <p id="commentaire-err"></p>
     </div>
 
-    <div>
+    <div class="case">
       <input type="checkbox" id="consentement" name="consentement" required aria-describedby="consentement-err" />
       <label for="consentement">J'accepte que mes coordonnées servent au traitement de la demande. *</label>
       <p id="consentement-err"></p>
     </div>
   </fieldset>
 
-  <div class="button-line">
+  <div class="boutons">
     <button type="submit">Envoyer la demande</button>
     <a routerLink="/services">Annuler</a>
   </div>
 </form>
 
 @if (service(); as service) {
-  <aside>
+  <aside class="encadre">
     <h2>{{ service.nom }}</h2>
     <ul>
       <li>Délai : {{ delai() }}</li>
