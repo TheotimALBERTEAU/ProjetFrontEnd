@@ -15,6 +15,7 @@ export class Espace {
     date: formaterDate(d.date),
     creneau: LIBELLES_CRENEAU[d.creneau],
     statut: LIBELLES_STATUT[d.statut],
+    code: d.statut,
     annulable: d.statut === 'envoyee',
   }));
 }
