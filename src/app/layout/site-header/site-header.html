@@ -1,11 +1,20 @@
 <header>
-  <p><a routerLink="/">Portail des services</a></p>
-  <nav aria-label="Navigation principale">
-    <ul>
+  <p class="marque"><a routerLink="/"><span class="logo" aria-hidden="true"></span>Portail des services</a></p>
+  <button
+    type="button"
+    class="bouton-neutre menu-bouton"
+    aria-controls="menu-principal"
+    [attr.aria-expanded]="menuOuvert()"
+    (click)="menuOuvert.set(!menuOuvert())"
+  >
+    Menu
+  </button>
+  <nav id="menu-principal" aria-label="Navigation principale" [class.ouvert]="menuOuvert()">
+    <ul (click)="menuOuvert.set(false)">
       <li><a routerLink="/services" routerLinkActive ariaCurrentWhenActive="page">Services</a></li>
       <li><a routerLink="/espace" routerLinkActive ariaCurrentWhenActive="page">Mes demandes</a></li>
       <li><a href="#">Aide</a></li>
-      <li><a routerLink="/espace">Mon espace</a></li>
+      <li><a routerLink="/espace" class="bouton">Mon espace</a></li>
     </ul>
   </nav>
 </header>

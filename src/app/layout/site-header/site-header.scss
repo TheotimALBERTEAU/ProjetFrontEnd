@@ -1,0 +1,133 @@
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espace-4);
+  min-height: 60px;
+  padding-inline: max(var(--gouttiere), (100% - var(--largeur-max)) / 2);
+  background: var(--couleur-fond);
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.marque a {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-3);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--couleur-texte);
+  text-decoration: none;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  background: var(--couleur-primaire);
+  border-radius: 6px;
+}
+
+.menu-bouton {
+  min-height: 36px;
+  padding: var(--espace-1) var(--espace-4);
+}
+
+nav {
+  display: none;
+  position: absolute;
+  inset: 100% 0 auto;
+  z-index: 10;
+  padding: var(--espace-4) var(--gouttiere);
+  background: var(--couleur-fond);
+  border-bottom: 1px solid var(--couleur-bordure);
+  box-shadow: var(--ombre-carte-survol);
+
+  &.ouvert {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-2);
+  }
+
+  a:not(.bouton) {
+    display: block;
+    padding: var(--espace-2) 0;
+    color: var(--couleur-texte);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--couleur-primaire);
+    }
+
+    &[aria-current="page"] {
+      font-weight: 700;
+      color: var(--couleur-primaire);
+    }
+  }
+
+  .bouton {
+    width: 100%;
+    margin-top: var(--espace-2);
+  }
+}
+
+@media (min-width: 48em) {
+  header {
+    min-height: 72px;
+  }
+
+  .marque a {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 64em) {
+  .menu-bouton {
+    display: none;
+  }
+
+  nav,
+  nav.ouvert {
+    display: block;
+    position: static;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  nav ul {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--espace-6);
+  }
+
+  nav a:not(.bouton) {
+    position: relative;
+    padding: var(--espace-5) 0;
+
+    &[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 var(--espace-2);
+      height: 3px;
+      background: var(--couleur-primaire);
+      border-radius: 2px;
+    }
+  }
+
+  nav .bouton {
+    width: auto;
+    min-height: 36px;
+    margin: 0 0 0 var(--espace-5);
+    padding: var(--espace-1) var(--espace-5);
+  }
+}
